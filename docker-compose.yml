@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: server
+    image: 'frontend'
+    build:
+      context: .
+    ports:
+      - 100:100
+  db:
+    image: 'mysql:latest'
+    environment:
+       MYSQL_DATABASE: 'node'
+       MYSQL_USER: 'node'
+       MYSQL_PASSWORD: 'node'
+       MYSQL_ROOT_PASSWORD: 'node'
+    ports:
+      - 13306:3306
+    volumes:
+      - testvol:/var/lib/mysql
+volumes:
+  testvol:   
