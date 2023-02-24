@@ -9,6 +9,7 @@ services:
     ports:
       - 100:100
   db:
+    container_name: mysql
     image: 'mysql:latest'
     environment:
        MYSQL_DATABASE: 'node'
@@ -19,5 +20,22 @@ services:
       - 13306:3306
     volumes:
       - testvol:/var/lib/mysql
+
+  mongodb :   
+    container_name : mongodb 
+    image: 'mongo'
+    ports:
+      - 27017:27017
+    
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
+
+    volumes:
+    #src to dest
+      - cubos:/data/db
+      - mongodb_config:/data/configdb
 volumes:
-  testvol:   
+  testvol :
+  cubos : 
+  mongodb_config :
